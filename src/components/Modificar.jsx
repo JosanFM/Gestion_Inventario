@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Register = () => {
+export const Modificar = () => {
   return (
     <div>Register</div>
   )
