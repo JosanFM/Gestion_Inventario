@@ -1,11 +1,17 @@
+import { useState } from 'react'
 import './App.css'
+import { Listado } from './components/Listado'
+import { Login } from './components/Login'
 
 
 function App() {
 
+  const [listadoState, setListadoState] = useState([]);
+
   return (
     <>
-      <h1>Hellow</h1>
+      <Login/>
+      <Listado listadoState = {listadoState} setListadoState = {setListadoState}/>
     </>
   )
 }
