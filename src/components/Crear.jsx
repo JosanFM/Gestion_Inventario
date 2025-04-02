@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Josan = () => {
+export const Crear = () => {
   return (
     <div>Josan</div>
   )

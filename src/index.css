@@ -1,4 +1,10 @@
+@import "tailwindcss";
 
+.custom-btn {
+  background-color: #16a34a;  
+  color: #ffffff;  
+}
+/*
 
 
 :root {
