@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { supabase } from '../supabase/cliente';
 
-export const Listado = (listadoState, setListadoState) => {
+export const Listado = ({listadoState, setListadoState}) => {
 
   useEffect(() => {
     conseguirProductos();
@@ -34,7 +34,7 @@ export const Listado = (listadoState, setListadoState) => {
       {listadoState != null ? listadoState.map(producto => {
         return (
           <article key={producto.id} className='producto-item'>
-            <h3 className='title'>{producto.titulo}</h3>
+            <h3 className="title">{producto.titulo}</h3>
             <p className='description'>{producto.descripcion}</p>
 
             <button className='edit' onClick={() => {setEditar(producto.id)}}>Editar</button>
