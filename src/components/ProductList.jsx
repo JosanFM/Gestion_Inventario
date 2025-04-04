@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabase/cliente';
+import { Container } from 'postcss';
 
 export const ProductList = () => {
 
@@ -41,7 +42,7 @@ export const ProductList = () => {
             <h2>Listado de Productos</h2>
             {products.length === 0 ? (
                 <p>No hay productos disponibles</p>
-            ):(
+            ):(/*
                 <table>
                     <thead>
                         <tr>
@@ -61,7 +62,26 @@ export const ProductList = () => {
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </table>*/
+
+
+                products.map(product =>{
+                    return (
+                        <article key={product.id} className='product-item'>
+                            <h3>{product.Nombre}</h3>
+                            <p>Precio por unidad: {product.Precio} euros</p>
+                            <p>Cantidad disponible: {product.Cantidad}</p>
+
+                            <button>Editar</button>
+                            <button>Borrar</button>
+                        </article>
+                    )
+                }
+
+                )
+
+
+
             )}
         </div>
     );
