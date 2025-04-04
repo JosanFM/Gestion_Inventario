@@ -4,6 +4,7 @@ import { SingIn } from "../components/SingIn";
 import { SingUp } from "../components/SingUp";
 import { DashBoard } from "../components/DashBoard";
 import { supabase } from "../supabase/cliente";
+import  Crear  from "../components/Crear";
 
 
 const AppRoutes= () => {
@@ -28,8 +29,9 @@ const AppRoutes= () => {
         <Routes>
             <Route path="/" element={<SingUp/>}/>
             <Route path="/singin" element={<SingIn/>} />
+           {/* <Route path="/crear" element={<Crear/>} /> */}
             <Route path="/singup" element={<SingUp/>} />
-            <Route path="/dashboard" element={user ? <DashBoard/> : <Navigate to='/singin' />} />
+            <Route path="/dashboard" element={user ? <Crear/> : <Navigate to='/singin' />} />
             <Route path="*" element={<Navigate to='/singin'/>}></Route>
         </Routes>
     )
