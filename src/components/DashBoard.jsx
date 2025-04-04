@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../supabase/cliente'
 import { ProductList } from './ProductList'
+import Crear from './Crear'
 
 
 export const DashBoard = () => {
@@ -21,6 +22,7 @@ export const DashBoard = () => {
       <h2>Bienvenido</h2>
       <button onClick={handleLogOut}>Cerrar sesion</button>
       <ProductList/>
+      <Crear/>
     </div>
   )
 }

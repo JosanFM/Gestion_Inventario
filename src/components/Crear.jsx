@@ -18,15 +18,11 @@ function Crear() {
 
     const navigate = useNavigate()
 
-    const handleLogOut = async () => {
-      await supabase.auth.signOut()
-      navigate('/singin')
-    }
 
   return (
     <div>
-        <h2>Bienvenido</h2>
-        <button onClick={handleLogOut}>Cerrar sesion</button>
+       
+        
         <form onSubmit={handleSubmit}>
             <input 
             type="text" 
