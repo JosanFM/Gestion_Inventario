@@ -7,6 +7,7 @@ import { supabase } from "../supabase/cliente";
 import  Crear  from "../components/Crear";
 
 
+
 const AppRoutes= () => {
 
     const [user, setUser] = useState(null)
