@@ -6,6 +6,7 @@ import { DashBoard } from "../components/DashBoard";
 import { supabase } from "../supabase/cliente";
 
 
+
 const AppRoutes= () => {
 
     const [user, setUser] = useState(null)
