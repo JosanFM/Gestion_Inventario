@@ -7,6 +7,8 @@ import { supabase } from "../supabase/cliente";
 import { useNavigate } from "react-router-dom";
 
 
+
+
 const AppRoutes= () => {
 
     const navigate = useNavigate()
@@ -39,6 +41,7 @@ const AppRoutes= () => {
 
     
     return(
+
             <Routes>
                 <Route path="/" element={<SingUp/>}/>
                 <Route path="/singin" element={<SingIn/>} />
@@ -49,6 +52,7 @@ const AppRoutes= () => {
         
             
             
+
     )
 }
 
