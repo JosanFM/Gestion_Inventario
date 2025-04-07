@@ -4,19 +4,33 @@ import { SingIn } from "../components/SingIn";
 import { SingUp } from "../components/SingUp";
 import { DashBoard } from "../components/DashBoard";
 import { supabase } from "../supabase/cliente";
+import { useNavigate } from "react-router-dom";
 
 
 const AppRoutes= () => {
 
+    const navigate = useNavigate()
+        
+
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        supabase.auth.getUser().then(({data}) => {
-            setUser(data?.user || null)
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setUser(session?.user || null)
         })
+            
+        
 
         const {data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-            setUser(session?.user || null)
+            if(session?.user){
+                setUser(session?.user || null)
+                navigate('/dashboard')
+
+            } else {
+                setUser(null)
+                navigate('/singin')
+            }
+            
         })
         return() => {
             listener?.subscription?.unsubscribe()
@@ -25,13 +39,16 @@ const AppRoutes= () => {
 
     
     return(
-        <Routes>
-            <Route path="/" element={<SingUp/>}/>
-            <Route path="/singin" element={<SingIn/>} />
-            <Route path="/singup" element={<SingUp/>} />
-            <Route path="/dashboard" element={user ? <DashBoard/> : <Navigate to='/singin' />} />
-            <Route path="*" element={<Navigate to='/singin'/>}></Route>
-        </Routes>
+            <Routes>
+                <Route path="/" element={<SingUp/>}/>
+                <Route path="/singin" element={<SingIn/>} />
+                <Route path="/singup" element={<SingUp/>} />
+                <Route path="/dashboard" element={user ? <DashBoard/> : <Navigate to='/singin' />} />
+                <Route path="*" element={<Navigate to='/singin'/>}></Route>
+            </Routes>
+        
+            
+            
     )
 }
 

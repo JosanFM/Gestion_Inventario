@@ -11,26 +11,28 @@ export const AuthForm = ({ mode }) => {
         email:'',
         password: ''
     })
-
     const [error, setError] = useState (null)
     const [success, setSuccess] = useState(false)
     const navigate = useNavigate()
+    
+
+
 
     const handleChange = (e) => {
         const { name, value} = e.target
         setFormData({...formData, [name]: value})
      }
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-        setError(null)
-        setSuccess(false)
+        const { email, password} = formData
 
-        const {name, email, password} = formData
         let response
 
         if(mode === 'singup'){
-            response = await supabase.auth.signUp({name, email, password})
+            response = await supabase.auth.signUp({ email, password})
         } else {
             response = await supabase.auth.signInWithPassword({ email, password})
         }
@@ -44,13 +46,30 @@ export const AuthForm = ({ mode }) => {
     }
 
 
+    const handleSocialLogin = async (provider) =>{
+
+        try{
+            const {error} = await supabase.auth.signInWithOAuth({
+                provider: provider
+            })
+
+            if(error)  throw error
+           // navigate('/dashboard')
+        } catch(error){
+            setError(error.message)
+        
+    }
+}
+
+
+
     return(
         <form onSubmit={handleSubmit}>
-            <h2> { mode === 'singup' ? 'Registrate' : 'Inicia sesión'}</h2>
+            <h2> { mode === 'singup' ? 'Regístrate' : 'Inicia sesión'}</h2>
             <p>
-                { mode === 'singup' ? '¿Tienes cuenta?' : 'Aun no tienes cuenta'}
+                { mode === 'singup' ? '¿Tienes cuenta? ' : 'Aun no tienes cuenta '}
                 <Link to={mode === 'singup' ? '/singin' : '/singup'}>
-                      {mode === 'singup' ? 'Inicia sesiçon' : 'Registrate'}
+                      {mode === 'singup' ? 'Inicia sesión' : 'Regístrate'}
                 </Link>
             </p>
 
@@ -64,9 +83,16 @@ export const AuthForm = ({ mode }) => {
                     placeholder="Password" 
                     onChange={handleChange}/>    
 
-            <button type="submit" >{ mode === 'singup' ? 'Registrate' : 'Inicia sesión'}</button>    
+            <button type="submit" >{ mode === 'singup' ? ' Regístrate' : ' Inicia sesión'}</button>    
 
-            {error ? <p style={{color: 'red'}}>{ error }</p> : success && <p style={{color: 'green'}}>Correcto</p>}
+            {error ?  (<p style={{color: 'red'}}>{ error }</p>) 
+                    : (success && <p style={{color: 'green'}}>Correcto</p>)}
+
+            
+            <button type ='button' onClick={() => handleSocialLogin('google')}>Inicia sesion con google</button>
+            
+                   
         </form>
+        
     )
 }
