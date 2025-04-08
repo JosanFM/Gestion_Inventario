@@ -1,13 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabase/cliente';
-import { Container } from 'postcss';
+import { DeleteProduct } from './DeleteProduct';
+
 
 export const ProductList = () => {
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
 
 
     useEffect (() => {
@@ -35,6 +37,12 @@ export const ProductList = () => {
     if(error) return <div>Error: {error}</div>;
 
 
+    // Para actualizar el estado y la lista cuando elimino un producto:
+
+    const handleProductDeleted = (deletedId) => {
+        setProducts(products.filter(product => product.id !== deletedId))
+    }
+
 
 
     return (
@@ -42,7 +50,9 @@ export const ProductList = () => {
             <h2>Listado de Productos</h2>
             {products.length === 0 ? (
                 <p>No hay productos disponibles</p>
-            ):(/*
+            ):(
+                
+                /*  Para poner los datos en modo tabla
                 <table>
                     <thead>
                         <tr>
@@ -73,7 +83,7 @@ export const ProductList = () => {
                             <p>Cantidad disponible: {product.Cantidad}</p>
 
                             <button>Editar</button>
-                            <button>Borrar</button>
+                            <DeleteProduct productId={product.id} onDelete={handleProductDeleted}/>
                         </article>
                     )
                 }
