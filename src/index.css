@@ -81,6 +81,12 @@ input{
   padding: 20px;
 }
 
+.eliminar{
+  background-color: rgb(128, 13, 13);
+}
+
+
+
 
 
 @media (prefers-color-scheme: light) {
@@ -95,3 +101,5 @@ input{
     background-color: #f9f9f9;
   }
 }
+
+
