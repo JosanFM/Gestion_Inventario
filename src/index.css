@@ -137,6 +137,12 @@ button:hover {
   background-color: var(--color-bg);
 }
 
+.eliminar{
+  background-color: rgb(128, 13, 13);
+}
+
+
+
 
 .theme-switch-container {
   position: fixed;
@@ -162,8 +168,4 @@ button:hover {
 .theme-switch-button:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
-}
-
-.theme-icon {
-  font-size: 16px;
 }
