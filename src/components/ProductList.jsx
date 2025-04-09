@@ -3,11 +3,17 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../supabase/cliente';
 
 
+import { DeleteProduct } from './DeleteProduct';
+import { ControlarCantidad } from './ControlarCantidad';
+
+
+
 export const ProductList = () => {
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
 
 
     useEffect (() => {
@@ -29,11 +35,24 @@ export const ProductList = () => {
         };
         fetchProducts();
     },[]);
-
     if (loading) return <div>Cargando productos...</div>;
 
     if(error) return <div>Error: {error}</div>;
 
+
+    // Para actualizar el estado y la lista cuando elimino un producto:
+
+    const handleProductDeleted = (deletedId) => {
+        setProducts(products.filter(product => product.id !== deletedId))
+    };
+
+    const handleCantidadActualizada = (productId, nuevaCantidad) => {
+        setProducts((prevProducts) =>
+            prevProducts.map((product) =>
+                product.id === productId ? { ...product, Cantidad: nuevaCantidad } : product
+            )
+        );
+    };
 
 
 
@@ -42,7 +61,9 @@ export const ProductList = () => {
             <h2>Listado de Productos</h2>
             {products.length === 0 ? (
                 <p>No hay productos disponibles</p>
-            ):(/*
+            ):(
+                
+                /*  Para poner los datos en modo tabla
                 <table>
                     <thead>
                         <tr>
@@ -70,10 +91,13 @@ export const ProductList = () => {
                         <article key={product.id} className='product-item'>
                             <h3>{product.Nombre}</h3>
                             <p>Precio por unidad: {product.Precio} euros</p>
-                            <p>Cantidad disponible: {product.Cantidad}</p>
 
-                            <button>Editar</button>
-                            <button>Borrar</button>
+                            <ControlarCantidad 
+                            productId={product.id} 
+                            cantidadInicial={product.Cantidad}
+                            onCantidadActualizada ={handleCantidadActualizada}
+                            />
+                            <DeleteProduct productId={product.id} onDelete={handleProductDeleted}/>
                         </article>
                     )
                 }
