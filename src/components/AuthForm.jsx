@@ -65,9 +65,9 @@ export const AuthForm = ({ mode }) => {
 
 return (
     <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-[400px] h-[580px] bg-white rounded-xl shadow-2xl p-8 overflow-y-auto transition-all duration-300">
+        <div className="w-[500px] h-[730px] bg-white rounded-xl shadow-2xl p-8 overflow-y-auto transition-all duration-300">
 
-            {/* Logo */}
+            {/* logo */}
             
             <div className="flex justify-center mb-8">
                 <img 
@@ -94,7 +94,7 @@ return (
             </p>
 
 
-            {/* Formulario de inicio de sesión o registro */}
+            {/* formulario */}
 
             <form onSubmit={handleSubmit} className="space-y-6" >
                 <div>
@@ -147,11 +147,11 @@ return (
                         <div className="w-full border-t border-gray-200"></div>
                     </div>
                     <div className="relative flex justify-center text-sm">
-                        <span className="px-2 bg-white text-gray-500">O continúa con</span>
+                        <span className="p-4 bg-white text-gray-500">O continúa con</span>
                     </div>
                 </div>
 
-                {/* Boton de iniciar sesión con google */}
+                {/* boton de iniciar sesion con google */}
 
                 <button
                     type="button"
