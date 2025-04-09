@@ -31,9 +31,7 @@ export const ProductList = () => {
             }
         };
         fetchProducts();
-    },[]); // Entre los corchetes pongo cantidad y eliminar para que cuando se modifique eso
-    // se recargue la pagina y no se recargue la pagina solo al inicio!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+    },[]);
     if (loading) return <div>Cargando productos...</div>;
 
     if(error) return <div>Error: {error}</div>;
