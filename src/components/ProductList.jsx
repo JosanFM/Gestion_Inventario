@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabase/cliente';
+
+
 import { DeleteProduct } from './DeleteProduct';
 import { ControlarCantidad } from './ControlarCantidad';
+
 
 
 export const ProductList = () => {
