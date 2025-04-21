@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabase/cliente';
+
+
 import { DeleteProduct } from './DeleteProduct';
 import { ControlarCantidad } from './ControlarCantidad';
+
 
 
 export const ProductList = () => {
@@ -54,56 +57,46 @@ export const ProductList = () => {
 
 
     return (
-        <div className='product-list'>
-            <h2>Listado de Productos</h2>
-            {products.length === 0 ? (
-                <p>No hay productos disponibles</p>
-            ):(
+        <div className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {products.map(product => (
+            <div 
+              key={product.id}
+              className="w-full bg-gray-50 dark:bg-gray-700 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+            >
+              {/* Nombre */}
+              <div className="w-full">
+                <h3 className="text-xl font-semibold break-words text-gray-800 dark:text-gray-200">
+                  {product.Nombre}
+                </h3>
+              </div>
+    
+              {/* Precio */}
+              <div className="text-lg font-medium text-blue-600 dark:text-blue-400">
+                €{product.Precio}
+              </div>
+    
+              {/* Controles */}
+              <div className="w-full space-y-4 mt-4">
+                <div className="flex justify-center">
+                  <ControlarCantidad 
+                    productId={product.id} 
+                    cantidadInicial={product.Cantidad}
+                    onCantidadActualizada={handleCantidadActualizada}
+                  />
+                </div>
                 
-                /*  Para poner los datos en modo tabla
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Cantidad</th>
-                            <th>Precio/u</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {products.map((product) =>(
-                            <tr key={product.id}>
-                                <td>{product.id}</td>
-                                <td>{product.Nombre}</td>
-                                <td>{product.Cantidad}</td>
-                                <td>{product.Precio}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>*/
-
-
-                products.map(product =>{
-                    return (
-                        <article key={product.id} className='product-item'>
-                            <h3>{product.Nombre}</h3>
-                            <p>Precio por unidad: {product.Precio} euros</p>
-
-                            <ControlarCantidad 
-                            productId={product.id} 
-                            cantidadInicial={product.Cantidad}
-                            onCantidadActualizada ={handleCantidadActualizada}
-                            />
-                            <DeleteProduct productId={product.id} onDelete={handleProductDeleted}/>
-                        </article>
-                    )
-                }
-
-                )
-
-
-
-            )}
+                <div className="flex justify-center">
+                  <DeleteProduct 
+                    productId={product.id} 
+                    onDelete={handleProductDeleted}
+                    className="dark:bg-red-600 dark:hover:bg-red-700"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
     );
-}
+  };

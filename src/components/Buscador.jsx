@@ -67,42 +67,47 @@ export const Buscador = ({ setResultadosBusqueda }) => {
   };
   
   return (
-    <div className="search-container">
-      <h3 className="search-title">Buscador</h3>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div className="search-input-container">
-          <input
-            type="text"
-            id="search_field"
-            name="busqueda"
-            placeholder="Buscar productos..."
-            autoComplete="off"
-            onChange={buscarProducto}
-            value={busqueda}
-            className="search-input"
-          />
-          
-          {busqueda && (
-            <div className="search-term">
-              <span>Buscando: </span>
-              <strong>{busqueda}</strong>
-            </div>
-          )}
-          
-
-          {buscando && (
-            <div className="busqueda-buscando">
-              Buscando productos...
-            </div>
-          )}
-          
-          {mensajeBusqueda && (
-            <div className={`busqueda-mensaje ${getMensajeClass(mensajeBusqueda.tipo)}`}>
-              {mensajeBusqueda.texto}
-            </div>
-          )}
-        </div>
-      </form>
+    <div className="space-y-2">
+    <div className="relative">
+      <input
+        type="text"
+        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:ring-blue-600"
+        placeholder="Buscar productos..."
+        onChange={buscarProducto}
+        value={busqueda}
+      />
+      <svg 
+        className="absolute left-3 top-2.5 h-5 w-5 text-gray-400 dark:text-gray-400"
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
     </div>
-  );
+    
+    <div className="space-y-1">
+      {buscando && (
+        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+          <svg className="animate-spin h-4 w-4 mr-2 text-blue-500 dark:text-blue-400" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/>
+          </svg>
+          Buscando...
+        </div>
+      )}
+      
+      {mensajeBusqueda && (
+        <div className={`p-2 rounded-md text-sm ${
+          mensajeBusqueda.tipo === 'error' 
+            ? 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300' 
+            : mensajeBusqueda.tipo === 'success' 
+              ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300' 
+              : 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-300'
+        }`}>
+          {mensajeBusqueda.texto}
+        </div>
+      )}
+    </div>
+  </div>
+);
 };
