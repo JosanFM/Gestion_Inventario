@@ -20,9 +20,13 @@ export const DeleteProduct = ({ productId, onDelete }) => {
 
 
 
+
 return (
-  <button className='eliminar' onClick={handleDelete}>
-    Eliminar
-  </button>
-)
+    <button 
+      onClick={handleDelete}
+      className="w-full py-1 px-3 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+    >
+      Eliminar
+    </button>
+  );
 };
