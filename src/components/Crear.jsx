@@ -19,35 +19,43 @@ function Crear() {
     const navigate = useNavigate()
 
 
-  return (
-    <div>
-       
-        
-        <form onSubmit={handleSubmit}>
-            <input 
-            type="text" 
-            name="nombreProducto" 
-            placeholder="Escribe un producto " 
-            onChange={(e) => setNombreProducto(e.target.value)}
+    return (
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mb-6">
+          <h2 className="text-lg font-semibold mb-4 text-center dark:text-gray-200">
+            Nuevo Producto
+          </h2>
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <input
+              type="text"
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+              placeholder="Nombre del producto"
+              onChange={(e) => setNombreProducto(e.target.value)}
             />
-            <input 
-            type="text" 
-            name="precioProducto" 
-            placeholder="Precio" 
-            onChange={(e) => setPrecioProducto(e.target.value)}
+            
+            <input
+              type="text"
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+              placeholder="Precio"
+              onChange={(e) => setPrecioProducto(e.target.value)}
             />
-            <input 
-            type="number" 
-            name="cantidadProducto" 
-            placeholder="Cantidad" 
-            onChange={(e) => setCantidadProducto(e.target.value)}
+            
+            <input
+              type="number"
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+              placeholder="Cantidad"
+              onChange={(e) => setCantidadProducto(e.target.value)}
             />
-            <button>
-                Añadir
-            </button>
-        </form>
-    </div>
-  )
-}
-
+            
+            <div className="md:col-span-3 flex justify-center">
+              <button
+                type="submit"
+                className="px-8 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors max-w-xs w-full"
+              >
+                Crear Producto
+              </button>
+            </div>
+          </form>
+        </div>
+      );
+    }
 export default Crear
