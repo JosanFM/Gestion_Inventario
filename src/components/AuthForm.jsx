@@ -16,14 +16,10 @@ export const AuthForm = ({ mode }) => {
     const navigate = useNavigate()
     
 
-
-
     const handleChange = (e) => {
         const { name, value} = e.target
         setFormData({...formData, [name]: value})
      }
-
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -45,9 +41,7 @@ export const AuthForm = ({ mode }) => {
         }
     }
 
-
     const handleSocialLogin = async (provider) =>{
-
         try{
             const {error} = await supabase.auth.signInWithOAuth({
                 provider: provider
@@ -57,11 +51,8 @@ export const AuthForm = ({ mode }) => {
            // navigate('/dashboard')
         } catch(error){
             setError(error.message)
-        
+        }
     }
-}
-
-
 
 return (
     <div className="min-h-screen flex items-center justify-center p-4">

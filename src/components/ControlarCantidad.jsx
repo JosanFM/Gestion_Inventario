@@ -46,20 +46,20 @@ export const ControlarCantidad = ({productId, cantidadInicial}) => {
     <button 
       onClick={disminuir} 
       disabled={loading || cantidad <= 0}
-      className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 disabled:opacity-50 transition-colors"
+      className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50 transition-colors"
     >
       -
     </button>
     
-    <span className="font-medium text-gray-800 dark:text-gray-300">{cantidad}</span>
+    <span className="font-medium text-gray-800">{cantidad}</span>
     
     <button 
       onClick={incrementar} 
       disabled={loading}
-      className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 disabled:opacity-50 transition-colors"
+      className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50 transition-colors"
     >
       +
     </button>
   </div>
-);
+  );
 };

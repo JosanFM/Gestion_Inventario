@@ -2,19 +2,13 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabase/cliente';
 
-
 import { DeleteProduct } from './DeleteProduct';
 import { ControlarCantidad } from './ControlarCantidad';
 
-
-
 export const ProductList = () => {
-
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
-
 
     useEffect (() => {
         const fetchProducts = async() => {
@@ -39,9 +33,7 @@ export const ProductList = () => {
 
     if(error) return <div>Error: {error}</div>;
 
-
     // Para actualizar el estado y la lista cuando elimino un producto:
-
     const handleProductDeleted = (deletedId) => {
         setProducts(products.filter(product => product.id !== deletedId))
     };
@@ -54,25 +46,23 @@ export const ProductList = () => {
         );
     };
 
-
-
     return (
-        <div className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+        <div className="w-full bg-white rounded-lg shadow-sm p-6">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {products.map(product => (
             <div 
               key={product.id}
-              className="w-full bg-gray-50 dark:bg-gray-700 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+              className="w-full bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-colors"
             >
               {/* Nombre */}
               <div className="w-full">
-                <h3 className="text-xl font-semibold break-words text-gray-800 dark:text-gray-200">
+                <h3 className="text-xl font-semibold break-words text-gray-800">
                   {product.Nombre}
                 </h3>
               </div>
     
               {/* Precio */}
-              <div className="text-lg font-medium text-blue-600 dark:text-blue-400">
+              <div className="text-lg font-medium text-blue-600">
                 €{product.Precio}
               </div>
     
@@ -90,7 +80,6 @@ export const ProductList = () => {
                   <DeleteProduct 
                     productId={product.id} 
                     onDelete={handleProductDeleted}
-                    className="dark:bg-red-600 dark:hover:bg-red-700"
                   />
                 </div>
               </div>
