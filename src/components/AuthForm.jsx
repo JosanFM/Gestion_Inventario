@@ -62,8 +62,8 @@ return (
             
             <div className="flex justify-center mb-8">
                 <img 
-                    src="imagenes/logo.png"
-                    alt="imagenes/logo.png" 
+                    src="/imagenes/logo.png"
+                    alt="logo.png" 
                     className="h-16 w-16"
                 />
             </div>
