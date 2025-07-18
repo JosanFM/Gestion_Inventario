@@ -56,7 +56,7 @@ export const AuthForm = ({ mode }) => {
 
 return (
     <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-[500px] h-[730px] bg-white rounded-xl shadow-2xl p-8 overflow-y-auto transition-all duration-300">
+        <div className="w-[500px] h-[730px] bg-slate-800 rounded-xl shadow-2xl p-8 overflow-y-auto transition-all duration-300">
 
             {/* logo */}
             
@@ -68,17 +68,17 @@ return (
                 />
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
+            <h2 className="text-3xl font-bold text-cyan-300 text-center mb-6">
                 {mode === 'singup' ? "Crea tu cuenta" : "Bienvenido de nuevo"}
             </h2>
                     
-            <p className="text-center text-gray-500 mb-8">
+            <p className="text-center text-gray-200 mb-8">
                 {mode === 'singup' 
                     ? "Ya tienes una cuenta? "
-                    : "Nuevo en nuestra plataforma? "}
+                    : "¿Nuevo en nuestra plataforma? "}
                 <Link 
                     to={mode === 'singup' ? '/singin' : '/singup'} 
-                    className="text-indigo-600 hover:text-indigo-800 font-semibold transition-colors"
+                    className="text-cyan-300 hover:text-cyan-400 font-semibold transition-colors"
                 >
                     {mode === 'singup' ? "Iniciar sesión" : "Regístrate aquí"}
                 </Link>
@@ -94,7 +94,7 @@ return (
                         name="email"
                         placeholder="Correo electrónico"
                         onChange={handleChange}
-                        className="text-gray-800 w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-gray-400 transition-all"
+                        className="text-gray-100 w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-gray-100 transition-all"
                     />
                 </div>
 
@@ -104,13 +104,13 @@ return (
                         name="password"
                         placeholder="Contraseña"
                         onChange={handleChange}
-                        className="text-gray-800 w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-gray-400 transition-all"
+                        className="text-gray-100 w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-gray-100 transition-all"
                     />
                 </div>
 
                 <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-indigo-500 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-indigo-600 hover:to-blue-700 transition-all transform hover:scale-[1.01] shadow-md"
+                    className="w-full bg-gradient-to-r bg-cyan-600 text-white py-3 rounded-lg font-semibold hover:bg-cyan-700 transition-all transform hover:scale-[1.01] shadow-md"
                 >
                     {mode === 'singup' ? "Registrarse ahora" : "Iniciar sesión"}
                 </button>
@@ -138,7 +138,7 @@ return (
                         <div className="w-full border-t border-gray-200"></div>
                     </div>
                     <div className="relative flex justify-center text-sm">
-                        <span className="p-4 bg-white text-gray-500">O continúa con</span>
+                        <span className="p-4 bg-slate-800 text-gray-200">Continuar con</span>
                     </div>
                 </div>
 
@@ -147,7 +147,7 @@ return (
                 <button
                     type="button"
                     onClick={() => handleSocialLogin('google')}
-                    className="w-full flex items-center justify-center gap-2 py-3 border border-gray-200 rounded-lg font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 transition-all"
+                    className="w-full flex items-center justify-center gap-2 py-3 border border-gray-200 rounded-lg font-medium text-gray-200 hover:border-gray-300 hover:bg-slate-700 transition-all"
                 >
                     <svg className="w-5 h-5" viewBox="0 0 48 48">
                         <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>

@@ -47,22 +47,22 @@ export const ProductList = () => {
     };
 
     return (
-        <div className="w-full bg-white rounded-lg shadow-sm p-6">
+        <div className="w-full bg-slate-800 rounded-lg shadow-sm p-6">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {products.map(product => (
             <div 
               key={product.id}
-              className="w-full bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-colors"
+              className="w-full bg-slate-700 p-4 rounded-lg hover:bg-slate-600 transition-colors"
             >
               {/* Nombre */}
               <div className="w-full">
-                <h3 className="text-xl font-semibold break-words text-gray-800">
+                <h3 className="text-xl font-semibold break-words text-cyan-300">
                   {product.Nombre}
                 </h3>
               </div>
     
               {/* Precio */}
-              <div className="text-lg font-medium text-blue-600">
+              <div className="text-lg font-medium text-yellow-300">
                 €{product.Precio}
               </div>
     
